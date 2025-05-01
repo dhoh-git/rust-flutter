@@ -1,14 +1,14 @@
 import 'package:go_router/go_router.dart';
-import 'package:score/view/second_page.dart';
 
-import 'main.dart';
+import 'view/second_page.dart';
+import 'package:score/view/main_page.dart';
 
 final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
       builder: (context, state) {
-        return MyHomePage(title: 'Gorouter app',);
+        return MainPage(title: 'Gorouter app',);
       },
     ),
     GoRoute(
