@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:score/model/user.dart';
+import 'package:score/view/painter.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.title});
@@ -47,6 +48,16 @@ class _MainPageState extends State<MainPage> {
                 context.go('/second');
               },
               child: const Text('두번째 화면')
+          ),
+          ElevatedButton(
+              onPressed: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>PainterPage())
+                );
+                //context.go('/painter');
+              },
+              child: const Text('차트')
           ),
         ],
       ),

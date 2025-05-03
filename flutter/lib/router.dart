@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:score/view/painter.dart';
 
 import 'view/second_page.dart';
 import 'package:score/view/main_page.dart';
@@ -15,6 +16,12 @@ final router = GoRouter(
       path: '/second',
       builder: (context, state) {
         return SecondPage();
+      },
+    ),
+    GoRoute(
+      path: '/painter',
+      builder: (context, state) {
+        return PainterPage();
       },
     ),
   ],
