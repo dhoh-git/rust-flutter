@@ -1,3 +1,4 @@
+use actix_web::web::Path;
 use actix_web::{web, HttpResponse, get, Responder};
 use sqlx::MySqlPool;
 use serde_json::json;
@@ -15,7 +16,7 @@ pub struct User {
 }
 
 
-#[get("/api/users")]
+#[get("")]
 async fn get_users(pool: web::Data<MySqlPool>, search: web::Query<HashMap<String, String>>) -> impl Responder {
     let search_string: String = search.get("name").unwrap_or(&String::from("")).clone();
 
@@ -32,7 +33,29 @@ async fn get_users(pool: web::Data<MySqlPool>, search: web::Query<HashMap<String
         {}",
         condition
     );
-    print!("[{}]\n",query);
+    print!("pool:{:#?}, query:[{}]\n",pool,query);
+    let rows: Result<Vec<User>, _> = sqlx::query_as(&query)
+        .fetch_all(pool.as_ref())
+        .await;
+
+    match rows {
+        Ok(result) => HttpResponse::Ok().json(json!({"data": result })),
+        Err(e) => {
+            eprintln!("Database error: {:?}", e); 
+            HttpResponse::InternalServerError().json(json!({ "message": "Can't find data" }))
+        },
+    }
+}
+
+#[get("/{id}")]
+async fn get_user(pool: web::Data<MySqlPool>, id: Path<u32>) -> impl Responder {
+    let query = format!(
+        "SELECT id, name, phone_no
+        FROM pgs.user
+        WHERE id={}",
+        id
+    );
+    print!("pool:{:#?}, query:[{}]\n",pool,query);
     let rows: Result<Vec<User>, _> = sqlx::query_as(&query)
         .fetch_all(pool.as_ref())
         .await;
