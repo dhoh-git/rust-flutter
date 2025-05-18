@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:score/view/animation.dart';
+import 'package:score/view/painter.dart';
+import 'package:score/view/pie_chart.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 void main() {
@@ -94,10 +97,10 @@ class ExampleSidebarX extends StatelessWidget {
     return SidebarX(
       controller: _controller,
       theme: SidebarXTheme(
-        margin: const EdgeInsets.all(10),
+        //margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: canvasColor,
-          borderRadius: BorderRadius.circular(20),
+          //borderRadius: BorderRadius.circular(20),
         ),
         hoverColor: scaffoldBackgroundColor,
         textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
@@ -105,11 +108,11 @@ class ExampleSidebarX extends StatelessWidget {
         itemTextPadding: const EdgeInsets.only(left: 30),
         selectedItemTextPadding: const EdgeInsets.only(left: 30),
         itemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
           border: Border.all(color: canvasColor),
         ),
         selectedItemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
           border: Border.all(
             color: actionColor.withOpacity(0.37),
           ),
@@ -147,7 +150,7 @@ class ExampleSidebarX extends StatelessWidget {
           height: 100,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text("ㅁㅁㅁ"),
+            child: Text("메뉴"),
           ),
         );
       },
@@ -215,8 +218,16 @@ class _ScreensExample extends StatelessWidget {
                 ),
               ),
             );
-        // case 2:
-        // return Text("화면 분기 테스트");
+          case 1:
+            return DraggableCard(
+              child:
+                Icon(
+                  Icons.favorite,
+                  color: Colors.red,
+                  size: 200,)
+                );
+          case 2:
+            return PainterPage(key: this.key,);
 
           default:
             return Text(
