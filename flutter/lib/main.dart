@@ -182,6 +182,7 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Flutter',
         ),
       ],
+
     );
   }
 }
@@ -224,7 +225,7 @@ class _ScreensExample extends StatelessWidget {
                 Icon(
                   Icons.favorite,
                   color: Colors.red,
-                  size: 200,)
+                  size: MediaQuery.of(context).size.width/10,)
                 );
           case 2:
             return PainterPage(key: this.key,);
