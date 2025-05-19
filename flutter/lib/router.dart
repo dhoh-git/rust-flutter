@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:score/view/animation.dart';
 import 'package:score/view/painter.dart';
 
 import 'model/score.dart';
@@ -25,6 +26,12 @@ final router = GoRouter(
       path: '/painter',
       builder: (context, state) {
         return PainterPage();
+      },
+    ),
+    GoRoute(
+      path: '/animation',
+      builder: (context, state) {
+        return PhysicsCardDragDemo();
       },
     ),
   ],

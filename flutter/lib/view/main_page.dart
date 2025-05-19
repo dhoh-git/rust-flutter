@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:score/model/user.dart';
 import 'package:score/view/painter.dart';
 
+import 'animation.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.title});
   final String title;
@@ -58,6 +60,12 @@ class _MainPageState extends State<MainPage> {
                 //context.go('/painter');
               },
               child: const Text('차트')
+          ),
+          ElevatedButton(
+              onPressed: (){
+                context.go('/animation');
+              },
+              child: const Text('애니메이션')
           ),
         ],
       ),
