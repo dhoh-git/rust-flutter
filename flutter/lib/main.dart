@@ -94,7 +94,12 @@ class ExampleSidebarX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SidebarX(
+    return MouseRegion(
+      onHover: (event) {
+        //debugPrint('Red: ${event.position}');
+        _controller.setExtended(true);
+      },
+      child: SidebarX(
       controller: _controller,
       theme: SidebarXTheme(
         //margin: const EdgeInsets.all(10),
@@ -182,6 +187,7 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Flutter',
         ),
       ],
+    ),
     );
   }
 }
