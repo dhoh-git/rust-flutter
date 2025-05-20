@@ -10,10 +10,12 @@ class PhysicsCardDragDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //return const DraggableCard(child: FlutterLogo(size: 64));
-    return const DraggableCard(child:Icon(
-      Icons.favorite,
-      color: Colors.red,
-      size: 200,)
+    return DraggableCard(
+        child:Icon(
+          Icons.favorite,
+          color: Colors.red,
+          size: MediaQuery.of(context).size.width/10,
+        )
     );
   }
 }
