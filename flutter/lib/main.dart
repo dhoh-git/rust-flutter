@@ -97,7 +97,8 @@ class ExampleSidebarX extends StatelessWidget {
     return MouseRegion(
       onHover: (event) {
         //debugPrint('Red: ${event.position}');
-        _controller.setExtended(true);
+        if(!_controller.extended)
+          _controller.setExtended(true);
       },
       child: SidebarX(
         controller: _controller,
