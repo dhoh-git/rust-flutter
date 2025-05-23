@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:score/view/animation.dart';
+import 'package:score/view/overlay/easy_overlay.dart';
 import 'package:score/view/painter.dart';
+import 'package:score/view/search_bar/SearchBar.dart' as SB;
 import 'package:score/view/pie_chart.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -220,15 +223,17 @@ class _ScreensExample extends StatelessWidget {
               ),
             );
           case 1:
+            return EasyOverlay(key: this.key, title: "overlay",);
+          case 2:
+            return PainterPage(key: this.key,);
+          case 3:
             return DraggableCard(
-              child:
+                child:
                 Icon(
                   Icons.favorite,
                   color: Colors.red,
                   size: MediaQuery.of(context).size.width/10,)
-                );
-          case 2:
-            return PainterPage(key: this.key,);
+            );
 
           default:
             return Text(
