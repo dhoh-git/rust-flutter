@@ -12,7 +12,7 @@ class SearchController extends GetxController {
   SearchController();
 
   late final TextEditingController _inputController = TextEditingController();
-  final RxList<GoogleSearch> _curResults = <GoogleSearch>[].obs;
+  late final RxList<GoogleSearch> _curResults = <GoogleSearch>[].obs;
 
   TextEditingController get keywordController => _inputController;
   List<GoogleSearch> get curResults => _curResults;
@@ -22,6 +22,7 @@ class SearchController extends GetxController {
   void onInit() {
     super.onInit();
     log("onInit called", name: "search controller");
+    debugPrint("onInit called");
   }
 
   @override
@@ -43,6 +44,8 @@ class SearchController extends GetxController {
 
   Future<void> searchOnGoogle(String keyword) async {
     //_curResults.value = await searchRepo.searchOnGoogle(keyword);
-    _curResults.value = <GoogleSearch>[].obs;
+    _curResults.add(GoogleSearch(title: 'title'
+      ,link: "https://pga.freeddns.org", displayLink: '', mimeType: '', snippet: '', imageUrl: ''));
+    debugPrint("$_curResults");
   }
 }

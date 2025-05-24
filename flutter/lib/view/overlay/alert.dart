@@ -17,8 +17,8 @@ class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
-    _animation = Tween<Offset>(begin: Offset(0.0, -1.0), end: Offset.zero)
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
+    _animation = Tween<Offset>(begin: Offset(0.0, -1.0), end: Offset(0.0, 3.0))
         .animate(
         CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn));
 

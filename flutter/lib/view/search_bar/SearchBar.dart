@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-//import 'package:score/controller/controllers.dart' as SB;
+import 'package:score/controller/controllers.dart' as SB;
 
-class SearchBar extends StatelessWidget/*extends GetView<SB.SearchController>*/ {
+class SearchBar extends GetView<SB.SearchController> {
   final BorderRadiusGeometry? borderRadius;
   final void Function(String)? onChangedInput;
   final void Function()? onClearedInput;
@@ -26,24 +26,24 @@ class SearchBar extends StatelessWidget/*extends GetView<SB.SearchController>*/ 
     return Material(
       borderRadius: borderRadius,
       child: TextField(
-        //controller: controller.keywordController,
+        controller: controller.keywordController,
         cursorColor: Colors.yellow[800],
         style: Theme.of(context).textTheme.headlineMedium,
         onChanged: _onChangedInput,
         onSubmitted: _onSubmittedInput,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(
+          contentPadding: const EdgeInsets.symmetric(
             horizontal: 12,
             vertical: 8,
           ),
           enabledBorder: _noBorder(),
           focusedBorder: _borderBottomOnly(),
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             CupertinoIcons.search,
           ),
           suffixIcon: IconButton(
             color: Colors.blueGrey[300],
-            icon: Icon(CupertinoIcons.clear),
+            icon: const Icon(CupertinoIcons.clear),
             onPressed: _onClearedInput,
           ),
         ),
@@ -52,20 +52,24 @@ class SearchBar extends StatelessWidget/*extends GetView<SB.SearchController>*/ 
   }
 
   void _onChangedInput(String input) {
+    if (kDebugMode) {
+      print("${input}");
+    }
     if (onChangedInput != null) {
       onChangedInput!(input);
     }
   }
 
   void _onClearedInput() {
-    //controller.clearTextField();
+    controller.clearTextField();
     if (onClearedInput != null) {
       onClearedInput!();
     }
   }
 
   void _onSubmittedInput(String input) {
-    //controller.searchOnGoogle(input);
+    print(input);
+    controller.searchOnGoogle(input);
     if (onSubmittedInput != null) {
       onSubmittedInput!(input);
     }

@@ -5,6 +5,7 @@ import 'package:score/view/overlay/easy_overlay.dart';
 import 'package:score/view/painter.dart';
 import 'package:score/view/search_bar/SearchBar.dart' as SB;
 import 'package:score/view/pie_chart.dart';
+import 'package:score/view/search_bar/text_field_dropdown_page.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class NavHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SidebarX Example',
-      debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // 뭐가바뀌는지 모르겠음
         primaryColor: primaryColor,
@@ -187,6 +188,10 @@ class ExampleSidebarX extends StatelessWidget {
             label: 'Favorites',
           ),
           const SidebarXItem(
+            icon: Icons.window,
+            label: 'Overlay',
+          ),
+          const SidebarXItem(
             iconWidget: FlutterLogo(size: 20),
             label: 'Flutter',
           ),
@@ -229,7 +234,7 @@ class _ScreensExample extends StatelessWidget {
               ),
             );
           case 1:
-            return EasyOverlay(key: this.key, title: "overlay",);
+            return CustomTextFieldDropdownPage(key: this.key);
           case 2:
             return PainterPage(key: this.key,);
           case 3:
@@ -240,6 +245,8 @@ class _ScreensExample extends StatelessWidget {
                   color: Colors.red,
                   size: MediaQuery.of(context).size.width/10,)
             );
+          case 4:
+            return EasyOverlay(key: this.key, title: "overlay",);
 
           default:
             return Text(
@@ -264,10 +271,12 @@ String _getTitleByIndex(int index) {
     case 3:
       return 'Favorites';
     case 4:
-      return 'Custom iconWidget';
+      return 'Overlay';
     case 5:
-      return 'Profile';
+      return 'Custom iconWidget';
     case 6:
+      return 'Profile';
+    case 7:
       return 'Settings';
     default:
       return 'Not found page';

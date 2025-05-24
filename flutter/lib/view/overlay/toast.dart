@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Toast extends StatefulWidget {
@@ -16,7 +15,7 @@ class _ToastState extends State<Toast> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
 
     _animation = Tween(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(parent: _controller, curve: Curves.decelerate));
@@ -36,9 +35,9 @@ class _ToastState extends State<Toast> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Align(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.topRight,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 70),
+          padding: const EdgeInsets.only(top: 70,right: 70),
           child: FadeTransition(
             opacity: _animation,
             child: Material(

@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:score/view/animation.dart';
 import 'package:score/view/painter.dart';
+import 'package:score/view/search_bar/text_field_dropdown_page.dart';
 
 import 'model/score.dart';
 import 'view/second_page.dart';
@@ -32,6 +33,12 @@ final router = GoRouter(
       path: '/animation',
       builder: (context, state) {
         return PhysicsCardDragDemo();
+      },
+    ),
+    GoRoute(
+      path: '/search',
+      builder: (context, state) {
+        return CustomTextFieldDropdownPage();
       },
     ),
   ],
