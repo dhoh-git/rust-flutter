@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:score/view/animation.dart';
 import 'package:score/view/overlay/easy_overlay.dart';
 import 'package:score/view/painter.dart';
-import 'package:score/view/search_bar/SearchBar.dart' as SB;
-import 'package:score/view/pie_chart.dart';
 import 'package:score/view/search_bar/text_field_dropdown_page.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -103,6 +100,10 @@ class ExampleSidebarX extends StatelessWidget {
         //debugPrint('Red: ${event.position}');
         if(!_controller.extended)
           _controller.setExtended(true);
+      },
+      onExit: (event){
+        if(_controller.extended)
+          _controller.setExtended(false);
       },
       child: SidebarX(
         controller: _controller,
