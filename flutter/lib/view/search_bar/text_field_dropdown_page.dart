@@ -27,9 +27,16 @@ class _CustomTextFieldDropdownPageState extends State<CustomTextFieldDropdownPag
     _emailController = TextEditingController();
     _emailFocusNode = FocusNode()
       ..addListener(() {
-        if (!_emailFocusNode.hasFocus) {
+        //if (_emailFocusNode.hasFocus) {
+          //debugPrint("focusnode called!! hasfocus");
           //이것때문에 오버레이 클릭 시 닫혀버린다. _removeEmailOverlay();
-        }
+          //_removeEmailOverlay();
+          //_showEmailOverlay()
+        //}
+        //else {
+          //debugPrint("focusnode called!! not hasfocus");
+          //_removeEmailOverlay();
+        //}
       });
     debugPrint("dropdown init() called!!");
   }
@@ -47,11 +54,16 @@ class _CustomTextFieldDropdownPageState extends State<CustomTextFieldDropdownPag
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        debugPrint("dropdown ontap() called!!");
+        //debugPrint("dropdown ontap() called!!");
         final _currentFocus = FocusScope.of(context);
         if (!_currentFocus.hasPrimaryFocus) {
-          _currentFocus.unfocus();
+          debugPrint("dropdown ontap() not hasprimaryfocus");
+          //_currentFocus.unfocus();
         }
+        else {
+          debugPrint("dropdown ontap() hasprimaryfocus");
+        }
+        _removeEmailOverlay();
       },
       child: Scaffold(
         body: Center(
@@ -81,12 +93,12 @@ class _CustomTextFieldDropdownPageState extends State<CustomTextFieldDropdownPag
           // 이메일 자동 입력 드롭박스 출력.
           if (!_email.contains('@')) {
             if (_overlayEntry == null) {
-              _overlayEntry = _emailListOverlayEntry();
+              _overlayEntry = _emailListOverlayEntry(width : context.size?.width);
               Overlay.of(context).insert(_overlayEntry!);
             }
-            else{
+            //else{
               _overlayEntry?.markNeedsBuild();
-            }
+            //}
           }
           // 이메일 자동 입력 드롭박스 해제.
           else {
@@ -111,6 +123,7 @@ class _CustomTextFieldDropdownPageState extends State<CustomTextFieldDropdownPag
             keyboardType: TextInputType.emailAddress,
             textAlignVertical: TextAlignVertical.center,
             style: const TextStyle(fontSize: 16),
+            onTap: () => _showEmailOverlay(),  // 진입했을때도 오버레이 노출
             onChanged: (_) => _showEmailOverlay(),
             decoration: InputDecoration(
               // 여백.
@@ -143,9 +156,10 @@ class _CustomTextFieldDropdownPageState extends State<CustomTextFieldDropdownPag
   }
 
   // 이메일 자동 입력창.
-  OverlayEntry _emailListOverlayEntry() {
+  OverlayEntry _emailListOverlayEntry({required width}) {
     return customDropdown.emailRecommendation(
-      width: MediaQuery.of(context).size.width,
+      //width: MediaQuery.of(context).size.width,
+      width: width,
       margin: const EdgeInsets.symmetric(horizontal: 20),
       layerLink: _layerLink,
       controller: _emailController,
