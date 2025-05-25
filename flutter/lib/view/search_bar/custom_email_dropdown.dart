@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-CustomDropdown customDropdown = CustomDropdown();
+//CustomDropdown customDropdown = CustomDropdown();
 
 class CustomDropdown {
   // 이메일 자동 입력창.
@@ -12,14 +12,14 @@ class CustomDropdown {
     required TextEditingController controller,
     required Function onPressed,
   }) {
-    const List<String> _emailList = [
+    const List<String> emailList = [
       '@gmail.com',
       '@hotmail.com',
       '@naver.com',
       '@kakao.com',
       '@daum.net',
     ];
-    final _emailListLength = _emailList.length;
+    final emailListLength = emailList.length;
 
     return OverlayEntry(
       maintainState: true,
@@ -32,7 +32,7 @@ class CustomDropdown {
           child: Material(
             color: Colors.white,
             child: Container(
-              height: (22.0 * _emailListLength) + (21 * (_emailListLength - 1)) + 20,
+              height: (22.0 * emailListLength) + (21 * (emailListLength - 1)) + 20,
               margin: margin,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
@@ -41,15 +41,14 @@ class CustomDropdown {
               child: ListView.separated(
                 physics: const ClampingScrollPhysics(),
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                itemCount: _emailList.length,
+                itemCount: emailList.length,
                 itemBuilder: (context, index) {
                   return CupertinoButton(
                     padding: const EdgeInsets.symmetric(horizontal: 14),
                     pressedOpacity: 1,
-                    minSize: 0,
                     onPressed: () {
                       // 이메일 입력값 변경.
-                      controller.text += _emailList.elementAt(index);
+                      controller.text += emailList.elementAt(index);
                       debugPrint(controller.text);
 
                       onPressed();
@@ -57,7 +56,7 @@ class CustomDropdown {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '${controller.text}${_emailList.elementAt(index)}',
+                        '${controller.text}${emailList.elementAt(index)}',
                         style: const TextStyle(
                           fontSize: 16,
                           height: 22 / 16,

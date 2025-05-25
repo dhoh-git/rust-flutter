@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
 class PhysicsCardDragDemo extends StatelessWidget {
@@ -57,9 +54,9 @@ class _DraggableCardState extends State<DraggableCard>
     final unitsPerSecond = Offset(unitsPerSecondX, unitsPerSecondY);
     final unitVelocity = unitsPerSecond.distance;
 
-    const spring = SpringDescription(mass: 10, stiffness: 1, damping: 1);
+    const spring = SpringDescription(mass: 2, stiffness: 1, damping: 1);
 
-    final simulation = SpringSimulation(spring, 0, 1, -unitVelocity);
+    final simulation = SpringSimulation(spring, 0, 3, -unitVelocity);
 
     _controller.animateWith(simulation);
   }
@@ -86,12 +83,12 @@ class _DraggableCardState extends State<DraggableCard>
     final size = MediaQuery.of(context).size;
     return GestureDetector(
       onPanDown: (details) {
-        print("onPanDown()");
+        debugPrint("onPanDown()");
         _controller.stop();
       },
       onPanUpdate: (details) {
         setState(() {
-          print("onPanUpdate() ${details}");
+          //print("onPanUpdate() ${details}");
           _dragAlignment += Alignment(
             details.delta.dx / (size.width / 2),
             details.delta.dy / (size.height / 2),
@@ -99,7 +96,7 @@ class _DraggableCardState extends State<DraggableCard>
         });
       },
       onPanEnd: (details) {
-        print("onPanEnd()");
+        debugPrint("onPanEnd()");
         _runAnimation(details.velocity.pixelsPerSecond, size);
       },
       child: Align(alignment: _dragAlignment, child: Card(child: widget.child)),
