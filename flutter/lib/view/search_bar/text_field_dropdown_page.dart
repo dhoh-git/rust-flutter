@@ -25,7 +25,18 @@ class _CustomTextFieldDropdownPageState extends State<CustomTextFieldDropdownPag
   void initState() {
     super.initState();
     _emailController = TextEditingController();
-    _emailFocusNode = FocusNode();
+    _emailFocusNode = FocusNode()
+      ..addListener(
+        () {
+        if (_emailFocusNode.hasFocus) {
+          debugPrint("focusnode called!! hasfocus");
+          //이것때문에 오버레이 클릭 시 닫혀버린다. _removeEmailOverlay();
+        }
+        else {
+        debugPrint("focusnode called!! not hasfocus");
+         //_removeEmailOverlay();
+        }
+      });
   }
 
   @override
