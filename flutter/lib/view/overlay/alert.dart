@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Alert extends StatefulWidget {
@@ -17,8 +16,8 @@ class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
-    _animation = Tween<Offset>(begin: Offset(0.0, -1.0), end: Offset(0.0, 3.0))
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    _animation = Tween<Offset>(begin: const Offset(0.0, -1.0), end: const Offset(0.0, 3.0))
         .animate(
         CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn));
 
@@ -46,7 +45,7 @@ class _AlertState extends State<Alert> with SingleTickerProviderStateMixin {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     color: Colors.red, borderRadius: BorderRadius.circular(30)),
-                child: Text(
+                child: const Text(
                   'Alert',
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),

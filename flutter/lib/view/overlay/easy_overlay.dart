@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'overlay_example.dart';
@@ -20,8 +19,8 @@ class EasyOverlay extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                      onPressed: _example.showAlert, child: Text('Show alert')),
-                  ElevatedButton(onPressed: _example.toast, child: Text('Toast'))
+                      onPressed: _example.showAlert, child: const Text('Show alert')),
+                  ElevatedButton(onPressed: _example.toast, child: const Text('Toast'))
                 ])));
   }
 }

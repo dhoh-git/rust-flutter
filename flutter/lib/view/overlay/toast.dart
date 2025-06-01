@@ -47,7 +47,7 @@ class _ToastState extends State<Toast> with SingleTickerProviderStateMixin {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.grey),
-                  child: Text('Toast', style: TextStyle(color: Colors.white))),
+                  child: const Text('Toast', style: TextStyle(color: Colors.white))),
             ),
           ),
         ),

@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final _controller = SidebarXController(selectedIndex: 0, extended: true);
-    final _key = GlobalKey<ScaffoldState>();
+    final controller = SidebarXController(selectedIndex: 0, extended: true);
+    final key = GlobalKey<ScaffoldState>();
 
     return MaterialApp.router(
       routerConfig: router,

@@ -53,7 +53,7 @@ class SearchBar extends GetView<SB.SearchController> {
 
   void _onChangedInput(String input) {
     if (kDebugMode) {
-      print("${input}");
+      print(input);
     }
     if (onChangedInput != null) {
       onChangedInput!(input);

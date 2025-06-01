@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 const primaryColor = Color(0xFF685BFF);

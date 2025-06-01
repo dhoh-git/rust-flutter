@@ -143,10 +143,10 @@ class ExampleSidebarX extends StatelessWidget {
       footerDivider: divider,
       // 사이드바의 젤 상단에 나오는 텍스트
       headerBuilder: (context, extended) {
-        return SizedBox(
+        return const SizedBox(
           height: 100,
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Text("ㅁㅁㅁ"),
           ),
         );

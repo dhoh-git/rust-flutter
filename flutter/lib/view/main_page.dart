@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:score/model/user.dart';
 import 'package:score/view/painter.dart';
 
-import 'animation.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.title});
@@ -26,11 +25,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final _appBar = AppBar(
+    final appBar = AppBar(
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       title: Text(widget.title),
     );
-    final _body = Center(
+    final body = Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -70,16 +69,16 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
     );
-    final _floatingActButton = FloatingActionButton(
+    final floatingActButton = FloatingActionButton(
       onPressed: _incrementCounter,
       tooltip: 'Increment',
       child: const Icon(Icons.add),
 
     );
     return Scaffold(
-      appBar: _appBar,
-      body: _body,
-      floatingActionButton: _floatingActButton, // This trailing comma makes auto-formatting nicer for build methods.
+      appBar: appBar,
+      body: body,
+      floatingActionButton: floatingActButton, // This trailing comma makes auto-formatting nicer for build methods.
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }

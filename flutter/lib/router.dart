@@ -12,7 +12,7 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) {
-        return MainPage(title: 'Gorouter app',);
+        return const MainPage(title: 'Gorouter app',);
       },
     ),
     GoRoute(
@@ -32,13 +32,13 @@ final router = GoRouter(
     GoRoute(
       path: '/animation',
       builder: (context, state) {
-        return PhysicsCardDragDemo();
+        return const PhysicsCardDragDemo();
       },
     ),
     GoRoute(
       path: '/search',
       builder: (context, state) {
-        return CustomTextFieldDropdownPage();
+        return const CustomTextFieldDropdownPage();
       },
     ),
   ],

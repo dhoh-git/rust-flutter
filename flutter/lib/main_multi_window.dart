@@ -4,7 +4,6 @@ import 'package:collection/collection.dart';
 import 'package:desktop_lifecycle/desktop_lifecycle.dart';
 import 'package:desktop_multi_window/desktop_multi_window.dart';
 import 'package:flutter/material.dart';
-import 'package:score/view/pie_chart.dart';
 import 'package:score/event_widget.dart';
 
 void main(List<String> args) {

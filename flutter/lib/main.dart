@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:score/view/animation.dart';
+import 'package:score/view/cherry_blossom/cherry_blossom.dart';
 import 'package:score/view/overlay/easy_overlay.dart';
 import 'package:score/view/painter.dart';
 import 'package:score/view/search_bar/text_field_dropdown_page.dart';
@@ -98,18 +98,20 @@ class ExampleSidebarX extends StatelessWidget {
     return MouseRegion(
       onHover: (event) {
         //debugPrint('Red: ${event.position}');
-        if(!_controller.extended)
+        if(!_controller.extended) {
           _controller.setExtended(true);
+        }
       },
       onExit: (event){
-        if(_controller.extended)
+        if(_controller.extended) {
           _controller.setExtended(false);
+        }
       },
       child: SidebarX(
         controller: _controller,
         theme: SidebarXTheme(
           //margin: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: canvasColor,
             //borderRadius: BorderRadius.circular(20),
           ),
@@ -157,10 +159,10 @@ class ExampleSidebarX extends StatelessWidget {
         footerDivider: divider,
         // 사이드바의 젤 상단에 나오는 텍스트
         headerBuilder: (context, extended) {
-          return SizedBox(
+          return const SizedBox(
             height: 100,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Text("메뉴"),
             ),
           );
@@ -235,19 +237,20 @@ class _ScreensExample extends StatelessWidget {
               ),
             );
           case 1:
-            return CustomTextFieldDropdownPage(key: this.key);
+            return CustomTextFieldDropdownPage(key: key);
           case 2:
-            return PainterPage(key: this.key,);
+            return PainterPage(key: key,);
           case 3:
-            return DraggableCard(
+            return const CherryBlossomScreen(numberOfPetals: 50); {}
+            /*return DraggableCard(
                 child:
                 Icon(
                   Icons.favorite,
                   color: Colors.red,
                   size: MediaQuery.of(context).size.width/10,)
-            );
+            );*/
           case 4:
-            return EasyOverlay(key: this.key, title: "overlay",);
+            return EasyOverlay(key: key, title: "overlay",);
 
           default:
             return Text(
