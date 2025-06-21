@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:score/view/cherry_blossom/cherry_blossom.dart';
+import 'package:score/view/cherry_blossom/cherry_blossom.dart'; // deferred as cherry_blossom;
+import 'package:score/view/cherry_blossom/cherry_blossom_loader.dart';
 import 'package:score/view/overlay/easy_overlay.dart';
 import 'package:score/view/painter.dart';
 import 'package:score/view/search_bar/text_field_dropdown_page.dart';
@@ -48,19 +49,19 @@ class NavHome extends StatelessWidget {
             // 기기가 일반 스마트폰인지 태블릿인지 여부에 따라 앱바 다르게 보이게 함
             appBar: isSmallScreen
                 ? AppBar(
-              backgroundColor: canvasColor,
-              title: Text(_getTitleByIndex(_controller.selectedIndex)),
-              leading: IconButton(
-                onPressed: () {
-                  // if (!Platform.isAndroid && !Platform.isIOS) {
-                  //   _controller.setExtended(true);
-                  // }
-                  _key.currentState?.openDrawer();
-                },
-                icon: const Icon(Icons.menu),
-              ),
-            )
-            // 태블릿일 경우 아래 null 부분 실행
+                    backgroundColor: canvasColor,
+                    title: Text(_getTitleByIndex(_controller.selectedIndex)),
+                    leading: IconButton(
+                      onPressed: () {
+                        // if (!Platform.isAndroid && !Platform.isIOS) {
+                        //   _controller.setExtended(true);
+                        // }
+                        _key.currentState?.openDrawer();
+                      },
+                      icon: const Icon(Icons.menu),
+                    ),
+                  )
+                // 태블릿일 경우 아래 null 부분 실행
                 : null,
             drawer: ExampleSidebarX(controller: _controller),
             body: Row(
@@ -98,12 +99,12 @@ class ExampleSidebarX extends StatelessWidget {
     return MouseRegion(
       onHover: (event) {
         //debugPrint('Red: ${event.position}');
-        if(!_controller.extended) {
+        if (!_controller.extended) {
           _controller.setExtended(true);
         }
       },
-      onExit: (event){
-        if(_controller.extended) {
+      onExit: (event) {
+        if (_controller.extended) {
           _controller.setExtended(false);
         }
       },
@@ -220,8 +221,8 @@ class _ScreensExample extends StatelessWidget {
       builder: (context, child) {
         final pageTitle = _getTitleByIndex(controller.selectedIndex);
         switch (controller.selectedIndex) {
-        // 여기서 사이드바에서 메뉴를 클릭했을 때 달라지는 우측의 화면 지정해주는 곳.
-        // ex) case 1일땐 어느화면 보여주고, case 2 일땐 어느 화면 보여주고..
+          // 여기서 사이드바에서 메뉴를 클릭했을 때 달라지는 우측의 화면 지정해주는 곳.
+          // ex) case 1일땐 어느화면 보여주고, case 2 일땐 어느 화면 보여주고..
           case 0:
             return ListView.builder(
               padding: const EdgeInsets.only(top: 10),
@@ -239,10 +240,14 @@ class _ScreensExample extends StatelessWidget {
           case 1:
             return CustomTextFieldDropdownPage(key: key);
           case 2:
-            return PainterPage(key: key,);
+            return PainterPage(
+              key: key,
+            );
           case 3:
-            return const CherryBlossomScreen(numberOfPetals: 50); {}
-            /*return DraggableCard(
+            //await cherry_blossom.loadLibrary();
+            return const CherryBlossomLoader();
+          //return CherryBlossomScreen(numberOfPetals: 50);
+          /*return DraggableCard(
                 child:
                 Icon(
                   Icons.favorite,
@@ -250,7 +255,10 @@ class _ScreensExample extends StatelessWidget {
                   size: MediaQuery.of(context).size.width/10,)
             );*/
           case 4:
-            return EasyOverlay(key: key, title: "overlay",);
+            return EasyOverlay(
+              key: key,
+              title: "overlay",
+            );
 
           default:
             return Text(

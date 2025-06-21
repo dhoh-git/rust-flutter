@@ -5,7 +5,8 @@ import 'cherry_blossom_painter.dart';
 class CherryBlossomScreen extends StatefulWidget {
   final int numberOfPetals;
 
-  const CherryBlossomScreen({Key? key, this.numberOfPetals = 150}) : super(key: key);
+  const CherryBlossomScreen({Key? key, this.numberOfPetals = 150})
+      : super(key: key);
 
   @override
   _CherryBlossomScreenState createState() => _CherryBlossomScreenState();
@@ -26,7 +27,8 @@ class _CherryBlossomScreenState extends State<CherryBlossomScreen>
     )..repeat();
 
     _controller.addListener(() {
-      if (_screenSize != null && mounted) { // mounted 체크 추가
+      if (_screenSize != null && mounted) {
+        // mounted 체크 추가
         setState(() {
           for (var petal in _petals) {
             petal.fall(_screenSize!);
@@ -42,7 +44,7 @@ class _CherryBlossomScreenState extends State<CherryBlossomScreen>
       _screenSize = screenSize;
       _petals = List.generate(
         widget.numberOfPetals,
-            (index) => CherryBlossomPetal(screenSize),
+        (index) => CherryBlossomPetal(screenSize),
       );
     }
   }
